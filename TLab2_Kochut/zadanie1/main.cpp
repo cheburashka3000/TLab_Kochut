@@ -5,7 +5,6 @@ void check(const string& Text, const string& key, const bool destructCipherText 
 {
 	try {
 		locale loc("ru_RU.UTF-8");
-		wstring_convert < codecvt_utf8 <wchar_t>, wchar_t > codec;
 		string cipherText;
 		string decryptedText;
 		modAlphaCipher cipher(key);

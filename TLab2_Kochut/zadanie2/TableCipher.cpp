@@ -24,7 +24,6 @@ void TableCipher::encrypt(const string& open_text)
 		for (i = 0; i < strok; i++)
 			cout << sekret[i][j];
 	cout << endl;
-	return;
 };
 void TableCipher::decrypt(const string& cipher_text)
 {
@@ -52,7 +51,7 @@ void TableCipher::decrypt(const string& cipher_text)
 		for (j = 0; j < kluch; j++)
 			cout << nesekret[i][j];
 	cout << endl;
-	return;
+	return otvet;
 };
 TableCipher::TableCipher(const int& key)
 {
@@ -64,17 +63,25 @@ inline int TableCipher::getValidKey(const int & k)
 		throw cipher_error("The key cannot be less than 0");
 	if (k == 0)
 		throw cipher_error("The key cannot be 0");
+	if (k == 1)
+		throw cipher_error("The key cannot be 1");
 	return k;
 };
 inline std::string TableCipher::getValidOpenText(const std::string & s)
 {
 	if (s.empty())
 		throw cipher_error("Empty open text");
+	if (s.length() < kluch) {
+		cout << endl;
+		throw cipher_error("Open text less key");
+	}
 	return s;
 };
 inline std::string TableCipher::getValidCipherText(const std::string & s)
 {
 	if (s.empty())
 		throw cipher_error("Empty cipher text");
+	if (s.length() < kluch)
+		throw cipher_error("Cipher text less key");
 	return s;
 };

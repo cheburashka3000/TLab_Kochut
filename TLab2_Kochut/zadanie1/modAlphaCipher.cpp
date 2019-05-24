@@ -45,7 +45,6 @@ inline std::string modAlphaCipher::convert(const std::vector<int>& v)
 inline std::wstring modAlphaCipher::getValidKey(const std::wstring & ws)
 {
 	std::locale loc("ru_RU.UTF-8");
-	std::wstring_convert < std::codecvt_utf8 <wchar_t>, wchar_t > codec;
 	if (ws.empty())
 		throw cipher_error("Empty key");
 	std::wstring tmp(ws);
@@ -62,7 +61,6 @@ inline std::wstring modAlphaCipher::getValidKey(const std::wstring & ws)
 inline std::wstring modAlphaCipher::getValidOpenText(const std::wstring & ws)
 {
 	std::locale loc("ru_RU.UTF-8");
-	std::wstring_convert < std::codecvt_utf8 <wchar_t>, wchar_t > codec;
 	std::wstring tmp;
 	for (auto wc:ws) {
 		if (isalpha(wc, loc)) {
